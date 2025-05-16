@@ -12,3 +12,4 @@
 - Implementacion InMemory de ProductoRepository
 - Implementacion InMemory de CarroComprasRepository
 - Implementacion InMemory de DetalleProductoRepository
+- Se agrega `config.properties` como archivo de configuracion
