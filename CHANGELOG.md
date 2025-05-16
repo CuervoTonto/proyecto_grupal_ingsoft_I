@@ -13,3 +13,6 @@
 - Implementacion InMemory de CarroComprasRepository
 - Implementacion InMemory de DetalleProductoRepository
 - Se agrega `config.properties` como archivo de configuracion
+- Dominio Email
+- Caso de uso Email
+- Implementacion de JakartaMail para el envio de mails

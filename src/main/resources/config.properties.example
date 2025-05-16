@@ -1,1 +1,13 @@
 app.name=LlenarCarro
+
+# Gmail SMTP configuration
+mail.transport.protocol=smtp
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=587
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.ssl.trust=smtp.gmail.com
+
+# Credenciales
+mail.username=your_email@gmail.com
+mail.password=your_app_password
