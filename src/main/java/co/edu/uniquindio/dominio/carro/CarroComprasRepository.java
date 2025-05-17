@@ -1,5 +1,6 @@
 package co.edu.uniquindio.dominio.carro;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CarroComprasRepository {
@@ -26,4 +27,11 @@ public interface CarroComprasRepository {
      * @return carrito de compras si se encuentra
      */
     public Optional<CarroCompras> hallar(Integer id);
+
+    /**
+     * busca la informacion de los carros de compra basados en el id del ciudadano
+     * @param ciudadanoId id del cliente (dueño de los carritos)
+     * @returns carros de compra del cliente o {@code null} de otra forma
+     */
+    public List<CarroCompras> hallarCarrosComprasPorCliente(Integer ciudadanoId);
 }

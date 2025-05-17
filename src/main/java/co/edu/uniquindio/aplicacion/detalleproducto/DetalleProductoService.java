@@ -12,6 +12,7 @@ public class DetalleProductoService {
     private EliminarDetalleProductoUseCase eliminarDetalleProducto;
     private ActualizarDetalleProductoUseCase actualizarDetalleProducto;
     private HallarDetalleProductoUseCase hallarDetalleProducto;
+    private EliminarDetalleProductoPorCarroComprasUseCase eliminarDetalleProductoPorCarroCompras;
 
     public DetalleProductoService(DetalleProductoRepository repositorio) {
         // this.repositorio = repositorio;
@@ -19,6 +20,7 @@ public class DetalleProductoService {
         hallarDetalleProducto = new HallarDetalleProductoUseCase(repositorio);
         eliminarDetalleProducto = new EliminarDetalleProductoUseCase(repositorio);
         actualizarDetalleProducto = new ActualizarDetalleProductoUseCase(repositorio);
+        eliminarDetalleProductoPorCarroCompras = new EliminarDetalleProductoPorCarroComprasUseCase(repositorio);
     }
 
     public Optional<DetalleProducto> hallarPorId(Integer id) {
@@ -35,5 +37,9 @@ public class DetalleProductoService {
 
     public Boolean eliminar(Integer id) {
         return eliminarDetalleProducto.execute(id);
+    }
+
+    public Boolean elimnarPorCarroCompras(Integer carroComprasId) {
+        return eliminarDetalleProductoPorCarroCompras.execute(carroComprasId);
     }
 }

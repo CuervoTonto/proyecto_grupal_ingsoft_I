@@ -1,6 +1,7 @@
 package co.edu.uniquindio.infraestructura.carro.memory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -42,5 +43,19 @@ public class InMemoryCarritoComprasRepository implements CarroComprasRepository 
     @Override
     public Optional<CarroCompras> hallar(Integer id) {
         return Optional.ofNullable(datos.get(id));
+    }
+
+    @Override
+    public List<CarroCompras> hallarCarrosComprasPorCliente(Integer ciudadanoId) {
+        List<CarroCompras> resultado = datos.values().stream()
+            .filter(carro -> carro.getDueño().getId() == ciudadanoId)
+            .toList()
+        ;
+
+        if (resultado.isEmpty()) {
+            return null;
+        }
+
+        return resultado;
     }
 }

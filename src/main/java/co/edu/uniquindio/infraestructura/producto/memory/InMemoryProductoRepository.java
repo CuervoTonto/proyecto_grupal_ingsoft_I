@@ -1,6 +1,7 @@
 package co.edu.uniquindio.infraestructura.producto.memory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -35,5 +36,13 @@ public class InMemoryProductoRepository implements ProductoRepository {
     @Override
     public Optional<Producto> hallar(Integer id) {
         return Optional.ofNullable(datos.get(id));
+    }
+
+    @Override
+    public List<Producto> hallarProductosPorNombre(String nombre) {
+        return datos.values().stream()
+            .filter(p -> p.getNombre().matches(".*" + nombre + ".*"))
+            .toList()
+        ;
     }
 }

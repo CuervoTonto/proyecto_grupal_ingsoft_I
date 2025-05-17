@@ -1,3 +1,7 @@
+## Viernes 17 mayo 2025
+
+- Hallar productos por nombre
+
 ## Viernes 16 mayo 2025
 
 - Dominio Ciudadano
