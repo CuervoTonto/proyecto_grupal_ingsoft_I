@@ -13,18 +13,18 @@ public class RespositoryFactory {
     private RespositoryFactory() {}
 
     public static CiudadanoRepository crearCiudadanoRepository() {
-        return InMemoryCiudadanoRepository.INSTANCE;
+        return InMemoryCiudadanoRepository.getInstancia();
     }
 
     public static ProductoRepository crearProductoRepository() {
-        return InMemoryProductoRepository.INSTANCE;
+        return InMemoryProductoRepository.getInstancia();
     }
 
     public static CarroComprasRepository crearCarroComprasRepository() {
-        return InMemoryCarritoComprasRepository.INSTANCE;
+        return InMemoryCarritoComprasRepository.getInstancia();
     }
 
     public static DetalleProductoRepository creaDetalleProductoRepository() {
-        return InMemoryDetalleProductoRespository.INSTANCE;
+        return InMemoryDetalleProductoRespository.getInstancia();
     }
 }

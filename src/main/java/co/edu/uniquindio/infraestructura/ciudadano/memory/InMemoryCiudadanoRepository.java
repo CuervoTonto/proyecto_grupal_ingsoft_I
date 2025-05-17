@@ -7,13 +7,24 @@ import java.util.Optional;
 
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.dominio.ciudadano.CiudadanoRepository;
+import co.edu.uniquindio.infraestructura.detalleproducto.memory.InMemoryDetalleProductoRespository;
 
 public class InMemoryCiudadanoRepository implements CiudadanoRepository {
-    public static final InMemoryCiudadanoRepository INSTANCE = new InMemoryCiudadanoRepository();
+    public static InMemoryCiudadanoRepository instancia;
 
     private Map<Integer, Ciudadano> datos;
 
     private Integer ultimoId;
+
+    public static InMemoryCiudadanoRepository getInstancia() {
+        if (instancia == null) {
+            synchronized (InMemoryDetalleProductoRespository.class) {
+                if (instancia == null) instancia = new InMemoryCiudadanoRepository();
+            }
+        }
+        
+        return instancia;
+    }
 
     private InMemoryCiudadanoRepository() {
         datos = new HashMap<>();

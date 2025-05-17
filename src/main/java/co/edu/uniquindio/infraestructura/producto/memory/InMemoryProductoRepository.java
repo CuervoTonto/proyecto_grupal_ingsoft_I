@@ -9,11 +9,21 @@ import co.edu.uniquindio.dominio.producto.Producto;
 import co.edu.uniquindio.dominio.producto.ProductoRepository;
 
 public class InMemoryProductoRepository implements ProductoRepository {
-    public static final InMemoryProductoRepository INSTANCE = new InMemoryProductoRepository();
+    public static InMemoryProductoRepository instancia;
 
     private Map<Integer, Producto> datos;
 
     private Integer ultimoId;
+
+    public static InMemoryProductoRepository getInstancia() {
+        if (instancia == null) {
+            synchronized (InMemoryProductoRepository.class) {
+                if (instancia == null) instancia = new InMemoryProductoRepository();
+            }
+        }
+        
+        return instancia;
+    }
 
     private InMemoryProductoRepository() {
         datos = new HashMap<>();

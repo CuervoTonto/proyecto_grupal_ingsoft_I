@@ -9,11 +9,21 @@ import co.edu.uniquindio.dominio.carro.CarroCompras;
 import co.edu.uniquindio.dominio.carro.CarroComprasRepository;
 
 public class InMemoryCarritoComprasRepository implements CarroComprasRepository {
-    public static final InMemoryCarritoComprasRepository INSTANCE = new InMemoryCarritoComprasRepository();
+    public static InMemoryCarritoComprasRepository instancia;
 
     private Map<Integer, CarroCompras> datos;
 
     private Integer ultimoId;
+
+    public static InMemoryCarritoComprasRepository getInstancia() {
+        if (instancia == null) {
+            synchronized (InMemoryCarritoComprasRepository.class) {
+                if (instancia == null) instancia = new InMemoryCarritoComprasRepository();
+            }
+        }
+        
+        return instancia;
+    }
 
     private InMemoryCarritoComprasRepository() {
         datos = new HashMap<>();
