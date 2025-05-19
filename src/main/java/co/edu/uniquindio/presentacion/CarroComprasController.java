@@ -3,12 +3,14 @@ package co.edu.uniquindio.presentacion;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Optional;
 
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
 import co.edu.uniquindio.aplicacion.ciudadano.CiudadanoService;
 import co.edu.uniquindio.dominio.carro.CarroCompraEstado;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
+import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.factory.ServiceFactory;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -90,6 +92,9 @@ public class CarroComprasController {
     @FXML
     private TableView<CarroCompras> tablaCarrosCompras;
 
+    @FXML
+    private TextField ciudadanoIdTF;
+
     public CarroComprasController(CarroComprasService service, CiudadanoService ciudadanoService) {
         this.service = service;
         this.ciudadanoService = ciudadanoService;
@@ -104,7 +109,7 @@ public class CarroComprasController {
         impuestoCol.setCellValueFactory(new PropertyValueFactory<>("impuesto"));
         subtotalCol.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
         totalCol.setCellValueFactory(new PropertyValueFactory<>("total"));
-        ciudadanoCol.setCellValueFactory(cc -> new SimpleIntegerProperty(cc.getValue().getId()).asObject());
+        ciudadanoCol.setCellValueFactory(cc -> new SimpleIntegerProperty(cc.getValue().getDueño().getId()).asObject());
         estadoCol.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
         actualizarTabla();
@@ -157,7 +162,26 @@ public class CarroComprasController {
         App.setRoot((Parent) loader.load());
     }
 
+    @FXML 
+    void buscarCarroCompra() {
+        if (! ciudadanoIdTF.getText().trim().isEmpty()) {
+            Optional<Ciudadano> ciudadano = ciudadanoService.hallarPorId(Integer.parseInt(ciudadanoIdTF.getText().trim()));
+
+            if (ciudadano.isEmpty()) {
+                tablaCarrosCompras.setItems(FXCollections.emptyObservableList());
+            } else {
+                tablaCarrosCompras.setItems(FXCollections.observableArrayList(
+                    service.hallarPorCiudadano(ciudadano.get().getId())
+                ));
+            }
+        } else {
+            actualizarTabla();
+        }
+    }
+
     void actualizarTabla() {
+        ciudadanoIdTF.clear();
+
         tablaCarrosCompras.setItems(
             FXCollections.observableArrayList(service.hallarTodos())
         );
