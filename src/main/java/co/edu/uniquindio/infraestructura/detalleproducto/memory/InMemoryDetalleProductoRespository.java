@@ -1,6 +1,7 @@
 package co.edu.uniquindio.infraestructura.detalleproducto.memory;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -46,6 +47,11 @@ public class InMemoryDetalleProductoRespository implements DetalleProductoReposi
     @Override
     public Optional<DetalleProducto> hallar(Integer id) {
         return Optional.ofNullable(datos.get(id));
+    }
+
+    @Override
+    public List<DetalleProducto> hallarTodos() {
+        return new LinkedList<>(datos.values());
     }
 
     @Override

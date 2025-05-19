@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import co.edu.uniquindio.factory.ServiceFactory;
 import co.edu.uniquindio.presentacion.CarroComprasController;
 import co.edu.uniquindio.presentacion.CiudadanoController;
+import co.edu.uniquindio.presentacion.DetalleProductoController;
 import co.edu.uniquindio.presentacion.ProductoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,13 @@ public class App extends Application {
         ProductoController.class,
         () -> new ProductoController(ServiceFactory.crearProductoService()),
         CarroComprasController.class,
-        () -> new CarroComprasController(ServiceFactory.crearCarroComprasService(), ServiceFactory.crearCiudadanoService())
+        () -> new CarroComprasController(ServiceFactory.crearCarroComprasService(), ServiceFactory.crearCiudadanoService()),
+        DetalleProductoController.class,
+        () -> new DetalleProductoController(
+            ServiceFactory.crearDetalleProductoService(),
+            ServiceFactory.crearProductoService(),
+            ServiceFactory.crearCarroComprasService()
+        )
     );
 
     private static Object controllerFactory(Class<?> type) {

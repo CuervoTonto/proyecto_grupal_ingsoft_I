@@ -15,6 +15,7 @@ public class DetalleProductoService {
     private HallarDetalleProductoUseCase hallarDetalleProducto;
     private EliminarDetalleProductoPorCarroComprasUseCase eliminarDetalleProductoPorCarroCompras;
     private HallarDetalleProductoPorCarroComprasUseCase hallarDetalleProductoPorCarroCompras;
+    private HallarDetalleProductosTodosUseCase hallarDetalleProductosTodos;
 
     public DetalleProductoService(DetalleProductoRepository repositorio) {
         // this.repositorio = repositorio;
@@ -24,10 +25,15 @@ public class DetalleProductoService {
         actualizarDetalleProducto = new ActualizarDetalleProductoUseCase(repositorio);
         eliminarDetalleProductoPorCarroCompras = new EliminarDetalleProductoPorCarroComprasUseCase(repositorio);
         hallarDetalleProductoPorCarroCompras = new HallarDetalleProductoPorCarroComprasUseCase(repositorio);
+        hallarDetalleProductosTodos = new HallarDetalleProductosTodosUseCase(repositorio);
     }
 
     public Optional<DetalleProducto> hallarPorId(Integer id) {
         return hallarDetalleProducto.execute(id);
+    }
+
+    public List<DetalleProducto> hallarTodos() {
+        return hallarDetalleProductosTodos.execute();
     }
 
     public List<DetalleProducto> hallarPorCarroCompra(Integer carroCompraId) {

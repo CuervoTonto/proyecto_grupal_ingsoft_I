@@ -10,10 +10,7 @@ import co.edu.uniquindio.aplicacion.ciudadano.CiudadanoService;
 import co.edu.uniquindio.dominio.carro.CarroCompraEstado;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
 import co.edu.uniquindio.factory.ServiceFactory;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CarroComprasController {

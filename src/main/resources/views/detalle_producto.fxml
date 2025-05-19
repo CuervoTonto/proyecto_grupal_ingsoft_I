@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.presentacion.DetalleProductoController">
+   <children>
+      <Label layoutX="130.0" layoutY="38.0" text="concepto" />
+      <TextField fx:id="conceptoTF" layoutX="187.0" layoutY="34.0" />
+      <Label layoutX="355.0" layoutY="38.0" text="cantidad" />
+      <TextField fx:id="cantidadTF" layoutX="412.0" layoutY="34.0" prefWidth="80.0" />
+      <Label layoutX="49.0" layoutY="77.0" text="impuesto" />
+      <TextField fx:id="impuestoTF" layoutX="106.0" layoutY="73.0" prefWidth="75.0" />
+      <Label layoutX="385.0" layoutY="77.0" text="monto" />
+      <TextField fx:id="montoTF" layoutX="427.0" layoutY="73.0" prefWidth="100.0" />
+      <Label layoutX="203.0" layoutY="77.0" text="sub-total" />
+      <TextField fx:id="subtotalTF" layoutX="260.0" layoutY="73.0" prefWidth="100.0" />
+      <Label layoutX="311.0" layoutY="121.0" text="fecha-entrega" />
+      <Label layoutX="48.0" layoutY="121.0" text="fecha-prestamo" />
+      <Label layoutX="319.0" layoutY="166.0" text="producto (id)" />
+      <TextField fx:id="productoTF" layoutX="403.0" layoutY="162.0" />
+      <Label layoutX="48.0" layoutY="166.0" text="carro compra (id)" />
+      <TextField fx:id="carroCompraTF" layoutX="151.0" layoutY="162.0" />
+      <Button layoutX="47.0" layoutY="218.0" mnemonicParsing="false" onAction="#crearDetalleProducto" text="Crear detalle producto" />
+      <Button layoutX="492.0" layoutY="218.0" mnemonicParsing="false" onAction="#regresar" text="regresar" />
+      <Button layoutX="364.0" layoutY="218.0" mnemonicParsing="false" onAction="#limpiarCampos" text="limpiar campos" />
+      <TableView fx:id="tablaDetalleProducto" layoutX="47.0" layoutY="271.0" prefHeight="200.0" prefWidth="506.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="32.0" text="id" />
+          <TableColumn fx:id="conceptoCol" prefWidth="141.0" text="concepto" />
+            <TableColumn fx:id="cantidadCol" prefWidth="76.0" text="cantidad" />
+            <TableColumn fx:id="impuestoCol" prefWidth="81.0" text="impuesto" />
+            <TableColumn fx:id="subtotalCol" prefWidth="82.0" text="sub-total" />
+            <TableColumn fx:id="montoCol" prefWidth="93.0" text="monto" />
+        </columns>
+      </TableView>
+      <Label layoutX="48.0" layoutY="38.0" text="id" />
+      <TextField fx:id="idTF" disable="true" layoutX="66.0" layoutY="34.0" prefHeight="25.0" prefWidth="46.0" />
+      <Button layoutX="194.0" layoutY="218.0" mnemonicParsing="false" onAction="#actualizarDetalleProducto" text="actualizar detalle producto" />
+      <Button layoutX="47.0" layoutY="478.0" mnemonicParsing="false" onAction="#consultarDetalleProducto" text="consultar" />
+      <Button layoutX="119.0" layoutY="478.0" mnemonicParsing="false" onAction="#eliminarDetalleProducto" text="eliminar" />
+      <DatePicker fx:id="fechaPrestamoTF" layoutX="139.0" layoutY="117.0" prefWidth="149.0" />
+      <DatePicker fx:id="fechaEntregaTF" layoutX="395.0" layoutY="117.0" prefWidth="149.0" />
+   </children>
+</AnchorPane>
