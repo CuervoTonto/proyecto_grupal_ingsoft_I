@@ -79,6 +79,9 @@ public class ProductoController {
 
     @FXML
     private TableView<Producto> tablaProductos;
+
+    @FXML
+    private TextField buscarProductoTF;
     
     public ProductoController(ProductoService service) {
         this.service = service;
@@ -133,7 +136,16 @@ public class ProductoController {
         App.setRoot("main");
     }
 
+    @FXML
+    void buscarProducto() {
+        tablaProductos.setItems(FXCollections.observableList(
+            service.hallarPorNombre(buscarProductoTF.getText().trim())
+        ));
+    }
+
     private void actualizarTabla() {
+        buscarProductoTF.clear();
+
         tablaProductos.setItems(
             FXCollections.observableArrayList(service.hallarTodos())
         );

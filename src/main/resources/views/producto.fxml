@@ -8,26 +8,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.presentacion.ProductoController">
    <children>
       <Label layoutX="54.0" layoutY="42.0" text="codigo" />
       <TextField fx:id="codigoTF" layoutX="138.0" layoutY="38.0" />
       <Label layoutX="329.0" layoutY="42.0" text="nombre" />
       <TextField fx:id="nombreTF" layoutX="418.0" layoutY="38.0" />
-      <Label layoutX="27.0" layoutY="84.0" text="categoria principal" />
-      <TextField fx:id="categoriaPrincipalTF" layoutX="138.0" layoutY="80.0" />
-      <Label layoutX="299.0" layoutY="84.0" text="categoria secundaria" />
-      <TextField fx:id="categoriaSecundariaTF" layoutX="418.0" layoutY="80.0" />
-      <Label layoutX="42.0" layoutY="185.0" text="descripcion" />
-      <Label layoutX="56.0" layoutY="127.0" text="precio" />
-      <TextField fx:id="precioTF" layoutX="138.0" layoutY="123.0" />
-      <Label layoutX="340.0" layoutY="127.0" text="stock" />
-      <TextField fx:id="stockTF" layoutX="418.0" layoutY="123.0" />
-      <TextArea fx:id="descripcionTF" layoutX="129.0" layoutY="172.0" prefHeight="43.0" prefWidth="441.0" />
-      <Label layoutX="39.0" layoutY="237.0" text="catacteristicas" />
-      <TextArea fx:id="caracteristicasTF" layoutX="129.0" layoutY="224.0" prefHeight="43.0" prefWidth="441.0" />
-      <TableView fx:id="tablaProductos" layoutX="31.0" layoutY="352.0" prefHeight="200.0" prefWidth="536.0">
+      <Label layoutX="27.0" layoutY="75.0" text="categoria principal" />
+      <TextField fx:id="categoriaPrincipalTF" layoutX="138.0" layoutY="71.0" />
+      <Label layoutX="299.0" layoutY="75.0" text="categoria secundaria" />
+      <TextField fx:id="categoriaSecundariaTF" layoutX="418.0" layoutY="71.0" />
+      <Label layoutX="38.0" layoutY="153.0" text="descripcion" />
+      <Label layoutX="55.0" layoutY="106.0" text="precio" />
+      <TextField fx:id="precioTF" layoutX="137.0" layoutY="102.0" />
+      <Label layoutX="339.0" layoutY="106.0" text="stock" />
+      <TextField fx:id="stockTF" layoutX="417.0" layoutY="102.0" />
+      <TextArea fx:id="descripcionTF" layoutX="125.0" layoutY="140.0" prefHeight="43.0" prefWidth="441.0" />
+      <Label layoutX="35.0" layoutY="205.0" text="catacteristicas" />
+      <TextArea fx:id="caracteristicasTF" layoutX="125.0" layoutY="192.0" prefHeight="43.0" prefWidth="441.0" />
+      <TableView fx:id="tablaProductos" layoutX="32.0" layoutY="339.0" prefHeight="199.0" prefWidth="536.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="28.0" text="id" />
           <TableColumn fx:id="codigoCol" prefWidth="57.0" text="codigo" />
@@ -40,8 +39,10 @@
             <TableColumn fx:id="caracteristicasCol" prefWidth="77.0" text="caracteristicas" />
         </columns>
       </TableView>
-      <Button fx:id="crearProductoBtn" layoutX="34.0" layoutY="288.0" mnemonicParsing="false" onAction="#crearProducto" text="Crear Producto" />
-      <Button fx:id="limpiarCamposBtn" layoutX="138.0" layoutY="288.0" mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar campos" />
-      <Button fx:id="regresarBtn" layoutX="250.0" layoutY="288.0" mnemonicParsing="false" onAction="#regresar" text="regresar" />
+      <Button fx:id="crearProductoBtn" layoutX="32.0" layoutY="247.0" mnemonicParsing="false" onAction="#crearProducto" text="Crear Producto" />
+      <Button fx:id="limpiarCamposBtn" layoutX="136.0" layoutY="247.0" mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar campos" />
+      <Button fx:id="regresarBtn" layoutX="503.0" layoutY="247.0" mnemonicParsing="false" onAction="#regresar" text="Regresar" />
+      <TextField fx:id="buscarProductoTF" layoutX="32.0" layoutY="308.0" prefHeight="25.0" prefWidth="236.0" promptText="buscar por nombre del producto" />
+      <Button layoutX="274.0" layoutY="308.0" mnemonicParsing="false" onAction="#buscarProducto" text="Buscar" />
    </children>
 </AnchorPane>
