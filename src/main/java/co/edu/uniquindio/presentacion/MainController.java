@@ -22,8 +22,7 @@ public class MainController {
     }
 
     @FXML
-    void IrAProductos(ActionEvent event) {
-
+    void IrAProductos(ActionEvent event) throws Exception {
+        App.setRoot("producto");
     }
-
 }

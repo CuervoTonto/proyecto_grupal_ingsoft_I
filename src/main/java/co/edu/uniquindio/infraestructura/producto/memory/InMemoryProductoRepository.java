@@ -1,6 +1,7 @@
 package co.edu.uniquindio.infraestructura.producto.memory;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -54,5 +55,10 @@ public class InMemoryProductoRepository implements ProductoRepository {
             .filter(p -> p.getNombre().matches(".*" + nombre + ".*"))
             .toList()
         ;
+    }
+
+    @Override
+    public List<Producto> hallarTodos() {
+        return new LinkedList<>(datos.values());
     }
 }

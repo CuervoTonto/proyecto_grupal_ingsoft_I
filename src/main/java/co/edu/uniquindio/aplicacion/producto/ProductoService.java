@@ -12,12 +12,14 @@ public class ProductoService {
     private CrearProductoUseCase crearProducto;
     private HallarProductoUseCase hallarProducto;
     private HallarProductosPorNombreUseCase hallarProductosPorNombre;
+    private HallarTodosProductosUseCase hallarTodosProductos;
 
     public ProductoService(ProductoRepository repositorio) {
         // this.repositorio = repositorio;
         crearProducto = new CrearProductoUseCase(repositorio);
         hallarProducto = new HallarProductoUseCase(repositorio);
         hallarProductosPorNombre = new HallarProductosPorNombreUseCase(repositorio);
+        hallarTodosProductos = new HallarTodosProductosUseCase(repositorio);
     }
 
     public Producto crear(Producto producto) {
@@ -30,5 +32,9 @@ public class ProductoService {
 
     public List<Producto> hallarPorNombre(String nombre) {
         return hallarProductosPorNombre.execute(nombre);
+    }
+
+    public List<Producto> hallarTodos() {
+        return hallarTodosProductos.execute();
     }
 }
