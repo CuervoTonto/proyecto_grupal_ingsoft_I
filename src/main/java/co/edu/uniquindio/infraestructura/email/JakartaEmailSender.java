@@ -38,7 +38,7 @@ public class JakartaEmailSender implements EmailSender {
     @Override
     public void send(Email email) throws Exception {
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(email.getEmisor()));
+        // message.setFrom(new InternetAddress(email.getEmisor()));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email.getDestinatario()));
         message.setSubject(email.getAsunto());
 

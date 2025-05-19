@@ -3,6 +3,7 @@ package co.edu.uniquindio.factory;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
 import co.edu.uniquindio.aplicacion.ciudadano.CiudadanoService;
 import co.edu.uniquindio.aplicacion.detalleproducto.DetalleProductoService;
+import co.edu.uniquindio.aplicacion.email.EmailService;
 import co.edu.uniquindio.aplicacion.producto.ProductoService;
 
 public class ServiceFactory {
@@ -22,5 +23,9 @@ public class ServiceFactory {
 
     public static DetalleProductoService crearDetalleProductoService() {
         return new DetalleProductoService(RespositoryFactory.creaDetalleProductoRepository());
+    }
+
+    public static EmailService crearEmailService() {
+        return new EmailService(EmailSenderFactory.crearJakartaEmailSender());
     }
 }

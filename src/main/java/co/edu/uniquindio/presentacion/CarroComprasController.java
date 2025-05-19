@@ -155,7 +155,12 @@ public class CarroComprasController {
             getClass().getClassLoader().getResource("views/carro_compra_validar.fxml")
         );
 
-        CarroCompraValidacionController controller =  new CarroCompraValidacionController(service, ServiceFactory.crearDetalleProductoService());
+        CarroCompraValidacionController controller = new CarroCompraValidacionController(
+            service,
+            ServiceFactory.crearDetalleProductoService(),
+            ServiceFactory.crearEmailService()
+        );
+
         controller.establecerCarroCompra(tablaCarrosCompras.getSelectionModel().getSelectedItem().getId());
         loader.setController(controller);
 

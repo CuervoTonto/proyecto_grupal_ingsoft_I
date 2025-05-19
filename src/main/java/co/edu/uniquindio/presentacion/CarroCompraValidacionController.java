@@ -2,11 +2,16 @@ package co.edu.uniquindio.presentacion;
 
 import java.io.IOException;
 
+import org.thymeleaf.context.Context;
+
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
 import co.edu.uniquindio.aplicacion.detalleproducto.DetalleProductoService;
+import co.edu.uniquindio.aplicacion.email.EmailService;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
 import co.edu.uniquindio.dominio.detalleproducto.DetalleProducto;
+import co.edu.uniquindio.dominio.mail.Email;
+import co.edu.uniquindio.utilities.ThymeleafUtility;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +27,8 @@ public class CarroCompraValidacionController {
     private DetalleProductoService detalleProductoService;
 
     private CarroCompras carroCompras;
+    
+    private EmailService emailService;
 
     @FXML
     private TableColumn<DetalleProducto, Integer> cantidadCol;
@@ -85,10 +92,12 @@ public class CarroCompraValidacionController {
 
     public CarroCompraValidacionController(
         CarroComprasService carroComprasService,
-        DetalleProductoService detalleProductoService
+        DetalleProductoService detalleProductoService,
+        EmailService emailService
     ) {
         this.carroComprasService = carroComprasService;
         this.detalleProductoService = detalleProductoService;
+        this.emailService = emailService;
     }
 
     @FXML
@@ -129,7 +138,28 @@ public class CarroCompraValidacionController {
     @FXML
     void validarInformacion(ActionEvent event) throws Exception {
         carroComprasService.validar(this.carroCompras.getId());
+        enviarMailValidacion();
         App.setRoot("carro_compra");
+    }
+
+    private void enviarMailValidacion() {
+        Context context = new Context();
+
+        Email email = new Email();
+        email.setAsunto("CARRO DE COMPRA APROBADO");
+        email.setDestinatario(carroCompras.getDueño().getEmail());
+        email.setContenido(ThymeleafUtility.createEngine().process(
+            "carro_compras_aprobado",
+            context
+        ));
+
+        try {
+            emailService.enviar(email);
+        } catch (Exception e) {
+            System.out.println("No se pudo enviar el email!!!!!!!!!!!!!!!!");
+            // System.out.println(e);
+            throw new RuntimeException(e);
+        }
     }
 
     private void actualizarTablaDetalleProductos() {
