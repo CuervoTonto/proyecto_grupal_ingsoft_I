@@ -77,6 +77,9 @@ public class DetalleProductoController {
     @FXML
     private TextField subtotalTF;
 
+    @FXML
+    private TextField buscarCarroComprasTF;
+
     public DetalleProductoController(
         DetalleProductoService service,
         ProductoService productoService,
@@ -165,7 +168,39 @@ public class DetalleProductoController {
         App.setRoot("main");
     }
 
+    @FXML
+    void buscarDetalleProducto() {
+        if (buscarCarroComprasTF.getText().isEmpty()) {
+            actualizarTabla();
+        } else {
+            Optional<CarroCompras> carrito = carroComprasService.hallarPorId(
+                Integer.parseInt(buscarCarroComprasTF.getText())
+            );
+
+            if (carrito.isEmpty()) {
+                tablaDetalleProducto.setItems(FXCollections.emptyObservableList());
+            } else {
+                tablaDetalleProducto.setItems(FXCollections.observableList(
+                    service.hallarPorCarroCompra(carrito.get().getId())
+                ));
+            }
+        }
+    }
+
+    @FXML
+    void eliminarDetalleProductos() {
+        if (buscarCarroComprasTF.getText().isEmpty()) return;
+
+        service.elimnarPorCarroCompras(
+            Integer.parseInt(buscarCarroComprasTF.getText())
+        );
+
+        actualizarTabla();
+    }
+
     private void actualizarTabla() {
+        buscarCarroComprasTF.clear();
+
         tablaDetalleProducto.setItems(
             FXCollections.observableArrayList(service.hallarTodos())
         );
