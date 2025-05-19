@@ -1,5 +1,6 @@
 package co.edu.uniquindio.aplicacion.detalleproducto;
 
+import java.util.List;
 import java.util.Optional;
 
 import co.edu.uniquindio.dominio.detalleproducto.DetalleProducto;
@@ -13,6 +14,7 @@ public class DetalleProductoService {
     private ActualizarDetalleProductoUseCase actualizarDetalleProducto;
     private HallarDetalleProductoUseCase hallarDetalleProducto;
     private EliminarDetalleProductoPorCarroComprasUseCase eliminarDetalleProductoPorCarroCompras;
+    private HallarDetalleProductoPorCarroComprasUseCase hallarDetalleProductoPorCarroCompras;
 
     public DetalleProductoService(DetalleProductoRepository repositorio) {
         // this.repositorio = repositorio;
@@ -21,10 +23,15 @@ public class DetalleProductoService {
         eliminarDetalleProducto = new EliminarDetalleProductoUseCase(repositorio);
         actualizarDetalleProducto = new ActualizarDetalleProductoUseCase(repositorio);
         eliminarDetalleProductoPorCarroCompras = new EliminarDetalleProductoPorCarroComprasUseCase(repositorio);
+        hallarDetalleProductoPorCarroCompras = new HallarDetalleProductoPorCarroComprasUseCase(repositorio);
     }
 
     public Optional<DetalleProducto> hallarPorId(Integer id) {
         return hallarDetalleProducto.execute(id);
+    }
+
+    public List<DetalleProducto> hallarPorCarroCompra(Integer carroCompraId) {
+        return hallarDetalleProductoPorCarroCompras.execute(carroCompraId);
     }
 
     public DetalleProducto crear(DetalleProducto detalleProducto) {

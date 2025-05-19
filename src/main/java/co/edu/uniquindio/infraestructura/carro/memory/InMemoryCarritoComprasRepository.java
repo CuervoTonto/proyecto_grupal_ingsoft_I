@@ -1,6 +1,7 @@
 package co.edu.uniquindio.infraestructura.carro.memory;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -67,5 +68,10 @@ public class InMemoryCarritoComprasRepository implements CarroComprasRepository 
         }
 
         return resultado;
+    }
+
+    @Override
+    public List<CarroCompras> hallarTodos() {
+        return new LinkedList<>(datos.values());
     }
 }

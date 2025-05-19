@@ -34,4 +34,11 @@ public interface CarroComprasRepository {
      * @returns carros de compra del cliente o {@code null} de otra forma
      */
     public List<CarroCompras> hallarCarrosComprasPorCliente(Integer ciudadanoId);
+
+    /**
+     * halla todos las carros de compra
+     * 
+     * @return carros de compra en el repositorio
+     */
+    public List<CarroCompras> hallarTodos();
 }

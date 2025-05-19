@@ -13,6 +13,7 @@ public class CarroComprasService {
     private HallarCarroComprasUseCase hallarCarroCompras;
     private ValidarCarroComprasUseCase validarCarroCompras;
     private HallarCarroComprasPorCiudadanoUseCase hallarCarroComprasPorCiudadano;
+    private HallarCarroComprasTodosUseCase hallarCarroComprasTodos;
 
     public CarroComprasService(CarroComprasRepository repositorio) {
         // this.repositorio = repositorio;
@@ -20,6 +21,7 @@ public class CarroComprasService {
         hallarCarroCompras = new HallarCarroComprasUseCase(repositorio);
         validarCarroCompras = new ValidarCarroComprasUseCase(repositorio);
         hallarCarroComprasPorCiudadano = new HallarCarroComprasPorCiudadanoUseCase(repositorio);
+        hallarCarroComprasTodos = new HallarCarroComprasTodosUseCase(repositorio);
     }
 
     public CarroCompras craer(CarroCompras carroCompras) {
@@ -36,5 +38,9 @@ public class CarroComprasService {
 
     public List<CarroCompras> hallarPorCiudadano(Integer ciudadanoId) {
         return hallarCarroComprasPorCiudadano.execute(ciudadanoId);
+    }
+
+    public List<CarroCompras> hallarTodos() {
+        return hallarCarroComprasTodos.execute();
     }
 }

@@ -1,5 +1,7 @@
 package co.edu.uniquindio.presentacion;
 
+import java.io.IOException;
+
 import co.edu.uniquindio.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,8 +9,8 @@ import javafx.fxml.FXML;
 public class MainController {
 
     @FXML
-    void IrACarrosCompras(ActionEvent event) {
-
+    void IrACarrosCompras(ActionEvent event) throws IOException {
+        App.setRoot("carro_compra");
     }
 
     @FXML
