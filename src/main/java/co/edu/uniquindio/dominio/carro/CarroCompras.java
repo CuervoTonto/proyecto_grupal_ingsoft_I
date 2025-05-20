@@ -2,6 +2,7 @@ package co.edu.uniquindio.dominio.carro;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.Map;
 
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
@@ -32,7 +33,9 @@ public class CarroCompras {
 
     private Map<Integer, DetalleProducto> detalleProductos;
 
-    public CarroCompras() {}
+    public CarroCompras() {
+        this.detalleProductos = new HashMap<>();
+    }
 
     public CarroCompras(
         Integer id,
@@ -46,6 +49,7 @@ public class CarroCompras {
         Integer subtotal,
         Integer total
     ) {
+        this();
         this.id = id;
         this.codigo = codigo;
         this.fecha = fecha;
@@ -152,5 +156,23 @@ public class CarroCompras {
 
     public void setDetalleProductos(Map<Integer, DetalleProducto> detalleProductos) {
         this.detalleProductos = detalleProductos;
+    }
+
+    public Float calcularSubtotal() {
+        Double suma = detalleProductos.values().stream()
+            .mapToDouble(dp -> dp.calcularSubtotal())
+            .sum()
+        ;
+
+        return suma.floatValue();
+    }
+
+    public Integer calcularTotal() {
+        Integer suma = detalleProductos.values().stream()
+            .mapToInt(dp -> dp.calcularTotal())
+            .sum()
+        ;
+
+        return suma;
     }
 }

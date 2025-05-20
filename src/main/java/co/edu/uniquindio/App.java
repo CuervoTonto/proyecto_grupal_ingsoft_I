@@ -7,6 +7,8 @@ import java.util.function.Supplier;
 import co.edu.uniquindio.factory.ServiceFactory;
 import co.edu.uniquindio.presentacion.CarroComprasController;
 import co.edu.uniquindio.presentacion.CiudadanoController;
+import co.edu.uniquindio.presentacion.CrearCarroComprasController;
+import co.edu.uniquindio.presentacion.CrearDetalleProductoController;
 import co.edu.uniquindio.presentacion.DetalleProductoController;
 import co.edu.uniquindio.presentacion.ProductoController;
 import javafx.application.Application;
@@ -25,13 +27,21 @@ public class App extends Application {
         ProductoController.class,
         () -> new ProductoController(ServiceFactory.crearProductoService()),
         CarroComprasController.class,
-        () -> new CarroComprasController(ServiceFactory.crearCarroComprasService(), ServiceFactory.crearCiudadanoService()),
+        () -> new CarroComprasController(ServiceFactory.crearCarroComprasService()),
         DetalleProductoController.class,
         () -> new DetalleProductoController(
             ServiceFactory.crearDetalleProductoService(),
             ServiceFactory.crearProductoService(),
             ServiceFactory.crearCarroComprasService()
-        )
+        ),
+        CrearCarroComprasController.class,
+        () -> new CrearCarroComprasController(
+            ServiceFactory.crearCarroComprasService(),
+            ServiceFactory.crearCiudadanoService(),
+            ServiceFactory.crearDetalleProductoService()
+        ),
+        CrearDetalleProductoController.class,
+        () -> new CrearDetalleProductoController(ServiceFactory.crearProductoService())
     );
 
     private static Object controllerFactory(Class<?> type) {
@@ -59,14 +69,16 @@ public class App extends Application {
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         primaryStage.sizeToScene();
+        primaryStage.centerOnScreen();
     }
 
     public static void setRoot(Parent parent) throws Exception {
         scene.setRoot(parent);
         primaryStage.sizeToScene();
+        primaryStage.centerOnScreen();
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(
             App.class.getClassLoader().getResource("views/" + fxml + ".fxml")
         );
@@ -74,6 +86,11 @@ public class App extends Application {
         loader.setControllerFactory(App::controllerFactory);
 
         return loader.load();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getControllerFromFactory(Class<T> controllerClass) {
+        return (T) controllerProvider.get(controllerClass).get();
     }
 
     public static void main(String[] args) {

@@ -19,6 +19,9 @@ public class CrearDetalleProductoUseCase {
      * @return detalle de producto creado
      */
     public DetalleProducto execute(DetalleProducto detalleProducto) {
-        return repositorio.guardar(detalleProducto);
+        DetalleProducto creado = repositorio.guardar(detalleProducto);
+        creado.getCarroCompras().getDetalleProductos().put(creado.getId(), creado);
+    
+        return creado;
     }
 }

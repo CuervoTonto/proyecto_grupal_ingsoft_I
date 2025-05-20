@@ -139,4 +139,15 @@ public class DetalleProducto {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    public Float calcularSubtotal() {
+        Float impuesto = this.impuesto / 100;
+        Float subtotal = (producto.getPrecio() / (1 + impuesto)) * cantidad;
+
+        return subtotal;
+    }
+
+    public Integer calcularTotal() {
+        return ((Float) (producto.getPrecio() * cantidad)).intValue();
+    }
 }
