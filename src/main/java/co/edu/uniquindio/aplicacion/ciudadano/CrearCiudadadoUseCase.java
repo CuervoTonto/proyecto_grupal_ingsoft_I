@@ -2,6 +2,7 @@ package co.edu.uniquindio.aplicacion.ciudadano;
 
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.dominio.ciudadano.CiudadanoRepository;
+import co.edu.uniquindio.dominio.ciudadano.CrearCiudadanoData;
 
 /**
  * crea un ciudadano
@@ -15,10 +16,18 @@ public class CrearCiudadadoUseCase {
 
     /**
      * crea un ciudadano
-     * @param ciudadano informacion del ciudadano
+     * @param datos informacion del ciudadano
      * @return ciudadano creado
      */
-    public Ciudadano execute(Ciudadano ciudadano) {
+    public Ciudadano execute(CrearCiudadanoData datos) {
+        Ciudadano ciudadano = new Ciudadano();
+        ciudadano.setCedula(datos.cedula());
+        ciudadano.setNombre(datos.nombre());
+        ciudadano.setApellido(datos.apellido());
+        ciudadano.setEmail(datos.email());
+        ciudadano.setTelefono(datos.telefono());
+        ciudadano.setEstado(datos.estado());
+
         return this.repositorio.guardar(ciudadano);
     }
 }

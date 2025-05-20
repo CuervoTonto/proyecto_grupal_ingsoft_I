@@ -1,9 +1,14 @@
 package co.edu.uniquindio.presentacion;
 
+import java.util.List;
+
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.ciudadano.CiudadanoService;
+import co.edu.uniquindio.aplicacion.ciudadano.CrearCiudadanoValidador;
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.dominio.ciudadano.CiudadanoEstado;
+import co.edu.uniquindio.dominio.ciudadano.CrearCiudadanoData;
+import co.edu.uniquindio.utilities.AlertUtility;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,15 +87,34 @@ public class CiudadanoController {
 
     @FXML
     void crearUsuario(ActionEvent event) {
-        Ciudadano ciudadano = new Ciudadano();
-        ciudadano.setCedula(cedulaTF.getText().trim());
-        ciudadano.setNombre(nombreTF.getText().trim());
-        ciudadano.setApellido(apellidoTF.getText().trim());
-        ciudadano.setEmail(emailTF.getText().trim());
-        ciudadano.setTelefono(telefonoTF.getText().trim());
-        ciudadano.setEstado(CiudadanoEstado.ACTIVO);
+        CrearCiudadanoData datos = new CrearCiudadanoData(
+            cedulaTF.getText(),
+            nombreTF.getText(),
+            apellidoTF.getText(),
+            emailTF.getText(),
+            telefonoTF.getText()
+        );
 
-        service.crear(ciudadano);
+        CrearCiudadanoValidador validador = new CrearCiudadanoValidador();
+        List<String> errores = validador.validar(datos);
+
+        if (! errores.isEmpty()) {
+            AlertUtility.error(
+                "Error(es) de validacion",
+                String.join("\n", errores.stream().map(err -> "* " + err).toList())
+            ).showAndWait();
+            return;
+        }
+
+        // Ciudadano ciudadano = new Ciudadano();
+        // ciudadano.setCedula(cedulaTF.getText().trim());
+        // ciudadano.setNombre(nombreTF.getText().trim());
+        // ciudadano.setApellido(apellidoTF.getText().trim());
+        // ciudadano.setEmail(emailTF.getText().trim());
+        // ciudadano.setTelefono(telefonoTF.getText().trim());
+        // ciudadano.setEstado(CiudadanoEstado.ACTIVO);
+
+        service.crear(datos);
         actualizarTabla();
     }
 

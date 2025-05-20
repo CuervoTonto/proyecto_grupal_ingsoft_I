@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.dominio.ciudadano.CiudadanoRepository;
+import co.edu.uniquindio.dominio.ciudadano.CrearCiudadanoData;
 
 public class CiudadanoService {
     // private CiudadanoRepository repositorio;
@@ -20,7 +21,7 @@ public class CiudadanoService {
         this.hallarTodosCiudadanos = new HallarTodosCiudadanosUseCase(repositorio);
     }
 
-    public Ciudadano crear(Ciudadano ciudadano) {
+    public Ciudadano crear(CrearCiudadanoData ciudadano) {
         return crearCiudadado.execute(ciudadano);
     }
 
