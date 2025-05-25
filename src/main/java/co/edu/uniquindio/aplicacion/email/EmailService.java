@@ -10,7 +10,7 @@ public class EmailService {
         this.envairEmail = new EnviarEmailUseCase(emailSender);
     }
 
-    public void enviar(Email email) throws Exception {
+    public void enviar(Email email) {
         envairEmail.execute(email);
     }
 }

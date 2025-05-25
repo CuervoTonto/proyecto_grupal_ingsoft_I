@@ -38,7 +38,8 @@ public class App extends Application {
         () -> new CrearCarroComprasController(
             ServiceFactory.crearCarroComprasService(),
             ServiceFactory.crearCiudadanoService(),
-            ServiceFactory.crearDetalleProductoService()
+            ServiceFactory.crearDetalleProductoService(),
+            ServiceFactory.crearEmailService()
         ),
         CrearDetalleProductoController.class,
         () -> new CrearDetalleProductoController(ServiceFactory.crearProductoService())

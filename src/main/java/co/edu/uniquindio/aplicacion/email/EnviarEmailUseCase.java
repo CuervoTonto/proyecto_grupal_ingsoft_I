@@ -10,7 +10,13 @@ public class EnviarEmailUseCase {
         this.emailSender = sender;
     }
 
-    public void execute(Email email) throws Exception {
-        emailSender.send(email);
+    public void execute(Email email) {
+        new Thread(() -> {
+            try {
+                emailSender.send(email);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }).start();
     }
 }

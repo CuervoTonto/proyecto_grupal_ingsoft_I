@@ -9,15 +9,20 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.thymeleaf.context.Context;
+
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
 import co.edu.uniquindio.aplicacion.ciudadano.CiudadanoService;
 import co.edu.uniquindio.aplicacion.detalleproducto.DetalleProductoService;
+import co.edu.uniquindio.aplicacion.email.EmailService;
 import co.edu.uniquindio.dominio.carro.CarroCompraEstado;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
 import co.edu.uniquindio.dominio.ciudadano.Ciudadano;
 import co.edu.uniquindio.dominio.detalleproducto.DetalleProducto;
+import co.edu.uniquindio.dominio.mail.Email;
 import co.edu.uniquindio.utilities.AlertUtility;
+import co.edu.uniquindio.utilities.ThymeleafUtility;
 import javafx.beans.property.ReadOnlyFloatWrapper;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -103,16 +108,20 @@ public class CrearCarroComprasController {
 
     private DetalleProductoService dpService;
 
+    private EmailService emailService;
+
     private List<DetalleProducto> productos;
 
     public CrearCarroComprasController(
         CarroComprasService service,
         CiudadanoService ciudadanoService,
-        DetalleProductoService dpService
+        DetalleProductoService dpService,
+        EmailService emailService
     ) {
         this.service = service;
         this.ciudadanoService = ciudadanoService;
         this.dpService = dpService;
+        this.emailService = emailService;
         this.productos = new LinkedList<>();
     }
 
@@ -207,7 +216,7 @@ public class CrearCarroComprasController {
         carro.setCodigo(carroCodigoField.getText().trim());
         carro.setFecha(carroFechaField.getValue());
         carro.setHora(LocalTime.parse(carroHoraField.getText().trim()));
-        carro.setEstado(CarroCompraEstado.ACTIVO);
+        carro.setEstado(CarroCompraEstado.COMPLETADO);
         carro.setDueño(busqueda.get());
 
         service.craer(carro);
@@ -217,6 +226,9 @@ public class CrearCarroComprasController {
             detalleProducto.setCarroCompras(carro);
             dpService.crear(detalleProducto);
         }
+
+        // enviar email
+        enviarEmailValidacion(carro);
 
         App.setRoot("carro_compra");
     }
@@ -311,5 +323,19 @@ public class CrearCarroComprasController {
 
         NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
         totalCompraField.setText(formato.format(total));
+    }
+
+    private void enviarEmailValidacion(CarroCompras carroCompras) {
+        Context context = new Context();
+
+        Email email = new Email();
+        email.setAsunto("CARRO DE COMPRA APROBADO");
+        email.setDestinatario(carroCompras.getDueño().getEmail());
+        email.setContenido(ThymeleafUtility.createEngine().process(
+            "carro_compras_aprobado",
+            context
+        ));
+
+        emailService.enviar(email);
     }
 }
