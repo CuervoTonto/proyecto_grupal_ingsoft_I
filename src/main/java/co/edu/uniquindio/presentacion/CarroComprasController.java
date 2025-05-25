@@ -1,15 +1,17 @@
 package co.edu.uniquindio.presentacion;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Locale;
 
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
-import javafx.beans.property.ReadOnlyFloatWrapper;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +29,9 @@ public class CarroComprasController {
     private TableColumn<CarroCompras, Integer> idCol;
 
     @FXML
+    private TableColumn<CarroCompras, String> codigoCol;
+
+    @FXML
     private TableColumn<CarroCompras, Integer> ciudadanoCol;
 
     @FXML
@@ -39,10 +44,10 @@ public class CarroComprasController {
     private TableColumn<CarroCompras, String> observacionesCol;
 
     @FXML
-    private TableColumn<CarroCompras, Float> subtotalCol;
+    private TableColumn<CarroCompras, String> subtotalCol;
 
     @FXML
-    private TableColumn<CarroCompras, Integer> totalCol;
+    private TableColumn<CarroCompras, String> totalCol;
 
     @FXML
     private TableView<CarroCompras> tablaCarrosCompras;
@@ -57,12 +62,15 @@ public class CarroComprasController {
 
     @FXML
     void initialize() {
+        NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
+
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        codigoCol.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         ciudadanoCol.setCellValueFactory(cc -> new ReadOnlyIntegerWrapper(cc.getValue().getDueño().getId()).asObject());
         fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         horaCol.setCellValueFactory(new PropertyValueFactory<>("hora"));
-        subtotalCol.setCellValueFactory(cc -> new ReadOnlyFloatWrapper(cc.getValue().calcularSubtotal()).asObject());
-        totalCol.setCellValueFactory(cc -> new ReadOnlyIntegerWrapper(cc.getValue().calcularTotal()).asObject());
+        subtotalCol.setCellValueFactory(cc -> new ReadOnlyStringWrapper(formato.format(cc.getValue().calcularSubtotal())));
+        totalCol.setCellValueFactory(cc -> new ReadOnlyStringWrapper(formato.format(cc.getValue().calcularTotal())));
         observacionesCol.setCellValueFactory(new PropertyValueFactory<>("observaciones"));
 
         actualizarTabla();
@@ -83,7 +91,7 @@ public class CarroComprasController {
             );
 
             if (resultado == null) {
-                actualizarTabla();
+                tablaCarrosCompras.setItems(FXCollections.emptyObservableList());
             } else {
                 tablaCarrosCompras.setItems(FXCollections.observableList(resultado));
             }

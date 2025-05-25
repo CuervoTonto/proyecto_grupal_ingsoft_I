@@ -18,12 +18,13 @@
       <TableView fx:id="tablaCarrosCompras" layoutX="24.0" layoutY="155.0" prefHeight="368.0" prefWidth="756.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="43.0" text="id" />
-          <TableColumn fx:id="ciudadanoCol" prefWidth="117.0" text="ciudadano (id)" />
-            <TableColumn fx:id="fechaCol" text="fecha" />
-            <TableColumn fx:id="horaCol" prefWidth="55.0" text="hora" />
-            <TableColumn fx:id="subtotalCol" prefWidth="89.0" text="sutotal" />
-            <TableColumn fx:id="totalCol" minWidth="7.0" prefWidth="94.0" text="total" />
-            <TableColumn fx:id="observacionesCol" prefWidth="277.0" text="observaciones" />
+            <TableColumn fx:id="codigoCol" prefWidth="99.0" text="codigo" />
+          <TableColumn fx:id="ciudadanoCol" prefWidth="103.0" text="ciudadano (id)" />
+            <TableColumn fx:id="fechaCol" prefWidth="111.0" text="fecha" />
+            <TableColumn fx:id="horaCol" prefWidth="70.0" text="hora" />
+            <TableColumn fx:id="subtotalCol" prefWidth="101.0" text="sutotal" />
+            <TableColumn fx:id="totalCol" minWidth="7.0" prefWidth="82.0" text="total" />
+            <TableColumn fx:id="observacionesCol" prefWidth="146.0" text="observaciones" />
         </columns>
       </TableView>
       <TextField fx:id="busquedaTF" layoutX="24.0" layoutY="119.0" prefHeight="25.0" prefWidth="230.0" promptText="id ciudadano" />
