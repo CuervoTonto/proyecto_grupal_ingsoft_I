@@ -1,9 +1,13 @@
-## FUNCIONALIDADES
+## **INSTRUCCCIONES**
 
-- CRUD para DetalleProducto
+#### **Requisitos**
 
-- validar carro de compra [x]
-- Enviar notificacion (carro de compras)
-- consultar carritos de compra de un cliente [x]
-- consultar producto por nombre [x]
-- Limpiar carrito de compra [x]
+- java 17 o superior
+- maven
+
+#### **ejectuar el proyecto**
+
+1. ubicarse en la carpeta raiz del proyecto
+2. abrir una terminal/consola
+3. ejecutar el comando `mvn clear install compile`
+4. ejectuar el comando `mvn javafx:run`

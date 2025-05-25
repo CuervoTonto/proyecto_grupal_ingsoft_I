@@ -241,7 +241,18 @@ public class CrearCarroComprasController {
 
         DetalleProducto detalleProducto = controller.getDetalleProducto();
 
-        if (detalleProducto != null) {
+        if (detalleProducto == null) {
+            return;
+        }
+
+        Optional<DetalleProducto> enCarrito = productos.stream()
+            .filter(dp -> dp.getProducto().getId() == detalleProducto.getProducto().getId())
+            .findAny();
+
+        if (enCarrito.isPresent()) {
+            enCarrito.get().setCantidad(detalleProducto.getCantidad());
+            enCarrito.get().setImpuesto(detalleProducto.getImpuesto());
+        } else {
             productos.add(detalleProducto);
         }
 
@@ -276,7 +287,7 @@ public class CrearCarroComprasController {
                 .getResource("views/detalle_producto_editar.fxml")
         );
 
-        EditarCarroComprasController controller = new EditarCarroComprasController(seleccion);
+        EditarDetalleProductoController controller = new EditarDetalleProductoController(seleccion);
         loader.setController(controller);
         Parent root = loader.load();
 

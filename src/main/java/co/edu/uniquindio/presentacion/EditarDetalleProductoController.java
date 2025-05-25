@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class EditarCarroComprasController {
+public class EditarDetalleProductoController {
 
     @FXML
     private TextField cantidadField;
@@ -36,7 +36,7 @@ public class EditarCarroComprasController {
 
     private DetalleProducto detalleProducto;
 
-    public EditarCarroComprasController(
+    public EditarDetalleProductoController(
         DetalleProducto detalleProducto
     ) {
         this.detalleProducto = detalleProducto;

@@ -87,7 +87,7 @@ public class CrearDetalleProductoController {
 
         Integer cantidad = Integer.parseInt(cantidadField.getText().trim());
 
-        if (cantidad > detalleProducto.getProducto().getStock()) {
+        if (cantidad > seleccion.getStock()) {
             AlertUtility.error("Error", "La cantidad establecida supera el stock de productos").showAndWait();
             return;
         }
