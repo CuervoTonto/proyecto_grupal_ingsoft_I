@@ -61,4 +61,12 @@ public class InMemoryProductoRepository implements ProductoRepository {
     public List<Producto> hallarTodos() {
         return new LinkedList<>(datos.values());
     }
+
+    @Override
+    public Optional<Producto> hallarPorCodigo(String codigo) {
+        return datos.values().stream()
+            .filter(p -> p.getCodigo().equals(codigo))
+            .findAny()
+        ;
+    }
 }

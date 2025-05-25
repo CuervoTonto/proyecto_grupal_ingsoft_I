@@ -1,29 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.presentacion.MainController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.presentacion.MainController">
    <children>
-      <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#IrACiudadanos" prefHeight="150.0" prefWidth="247.0" text="Ciudadano" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#IrAProductos" prefHeight="150.0" prefWidth="247.0" text="Producto" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#IrACarrosCompras" prefHeight="150.0" prefWidth="247.0" text="CarroCompra" GridPane.columnIndex="1" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#IrADetallesProductos" prefHeight="150.0" prefWidth="247.0" text="DetalleProducto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Llenar Carro De Compras">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QMD - Ingenieria de software I [2025-1]" />
          </children>
-      </GridPane>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </VBox>
+      <VBox alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Participantes">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brahian Steven Mosquera Valanta">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="306.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brahian Steven Mosquera Valanta">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="306.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brahian Steven Mosquera Valanta">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" spacing="10.0">
+         <VBox.margin>
+            <Insets top="40.0" />
+         </VBox.margin>
+         <children>
+            <VBox onMouseClicked="#cambiarVistaCiudadano" style="-fx-background-color: #333438; -fx-background-radius: 10;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudadano">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox maxHeight="20.0" prefHeight="5.0" prefWidth="2.0" style="-fx-background-color: #ddd;" />
+            <VBox layoutX="360.0" layoutY="10.0" onMouseClicked="#cambiarVistaCarroCompras" style="-fx-background-color: #333438; -fx-background-radius: 10;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Carro de compras">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox layoutX="336.0" layoutY="18.0" maxHeight="20.0" prefHeight="5.0" prefWidth="2.0" style="-fx-background-color: #ddd;" />
+            <VBox layoutX="415.0" layoutY="10.0" onMouseClicked="#cambiarVistaProductos" style="-fx-background-color: #333438; -fx-background-radius: 10;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

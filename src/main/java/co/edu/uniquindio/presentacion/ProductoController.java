@@ -1,9 +1,12 @@
 package co.edu.uniquindio.presentacion;
 
 import co.edu.uniquindio.App;
+import co.edu.uniquindio.aplicacion.exceptions.ValidacionException;
 import co.edu.uniquindio.aplicacion.producto.ProductoService;
 import co.edu.uniquindio.dominio.producto.Producto;
-import co.edu.uniquindio.dominio.producto.ProductoEstado;
+import co.edu.uniquindio.presentacion.formulario.CrearProductoForm;
+import co.edu.uniquindio.presentacion.validador.CrearProductoFormValidador;
+import co.edu.uniquindio.utilities.AlertUtility;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,18 +107,24 @@ public class ProductoController {
 
     @FXML
     void crearProducto(ActionEvent event) {
-        Producto producto = new Producto();
-        producto.setCodigo(codigoTF.getText().trim());
-        producto.setNombre(nombreTF.getText().trim());
-        producto.setCategoriaPrincipal(categoriaPrincipalTF.getText().trim());
-        producto.setCategoriaSecundaria(categoriaSecundariaTF.getText().trim());
-        producto.setPrecio(Float.parseFloat(precioTF.getText().trim()));
-        producto.setStock(Integer.parseInt(stockTF.getText().trim()));
-        producto.setDescripcion(descripcionTF.getText().trim());
-        producto.setCaracteristicas(caracteristicasTF.getText().trim());
-        producto.setEstado(ProductoEstado.ACTIVO);
+        CrearProductoForm form = new CrearProductoForm(
+            codigoTF.getText().trim(),
+            nombreTF.getText().trim(),
+            precioTF.getText().trim(),
+            stockTF.getText().trim(),
+            descripcionTF.getText().trim(),
+            categoriaPrincipalTF.getText().trim(),
+            categoriaSecundariaTF.getText().trim(),
+            caracteristicasTF.getText().trim()
+        );
 
-        service.crear(producto);
+        try {
+            new CrearProductoFormValidador().validar(form);
+            service.crear(form.toData());
+        } catch (ValidacionException e) {
+            AlertUtility.validacion(e);
+        }
+
         actualizarTabla();
     }
 

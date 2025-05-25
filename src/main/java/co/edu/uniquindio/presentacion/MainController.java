@@ -1,28 +1,25 @@
 package co.edu.uniquindio.presentacion;
 
+import java.io.IOException;
+
 import co.edu.uniquindio.App;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
 public class MainController {
 
     @FXML
-    void IrACarrosCompras(ActionEvent event) throws Exception {
+    void cambiarVistaCarroCompras(MouseEvent event) throws IOException {
         App.setRoot("carro_compra");
     }
 
     @FXML
-    void IrACiudadanos(ActionEvent event) throws Exception {
+    void cambiarVistaCiudadano(MouseEvent event) throws IOException {
         App.setRoot("ciudadano");
     }
 
     @FXML
-    void IrADetallesProductos(ActionEvent event) throws Exception {
-        App.setRoot("detalle_producto");
-    }
-
-    @FXML
-    void IrAProductos(ActionEvent event) throws Exception {
+    void cambiarVistaProductos(MouseEvent event) throws IOException {
         App.setRoot("producto");
     }
 }

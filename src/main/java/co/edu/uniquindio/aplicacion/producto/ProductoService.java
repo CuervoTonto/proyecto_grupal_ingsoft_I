@@ -3,6 +3,8 @@ package co.edu.uniquindio.aplicacion.producto;
 import java.util.List;
 import java.util.Optional;
 
+import co.edu.uniquindio.aplicacion.exceptions.ValidacionException;
+import co.edu.uniquindio.dominio.producto.CrearProductoData;
 import co.edu.uniquindio.dominio.producto.Producto;
 import co.edu.uniquindio.dominio.producto.ProductoRepository;
 
@@ -22,7 +24,7 @@ public class ProductoService {
         hallarTodosProductos = new HallarTodosProductosUseCase(repositorio);
     }
 
-    public Producto crear(Producto producto) {
+    public Producto crear(CrearProductoData producto) throws ValidacionException {
         return crearProducto.execute(producto);
     }
 

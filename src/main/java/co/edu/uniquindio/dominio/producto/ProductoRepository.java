@@ -6,6 +6,7 @@ import java.util.Optional;
 public interface ProductoRepository {
     public Producto guardar(Producto producto);
     public Optional<Producto> hallar(Integer id);
+    public Optional<Producto> hallarPorCodigo(String codigo);
     public List<Producto> hallarProductosPorNombre(String nombre);
     public List<Producto> hallarTodos();
 }
