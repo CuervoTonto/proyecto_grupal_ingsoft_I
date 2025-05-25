@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import javax.swing.*;
+
 public class CrearDetalleProductoController {
 
     @FXML
@@ -109,7 +111,13 @@ public class CrearDetalleProductoController {
     // void calcularPrecios(ActionEvent event) {
     //     calcularPrecios();
     // }
+    @FXML
+    void ver(){
 
+        Producto seleccion = productoCB.getSelectionModel().getSelectedItem();
+        mostrarInformacionProducto(seleccion);
+
+    }
     @FXML
     void calcularPrecios() {
         subtotalField.setText("");
@@ -142,6 +150,34 @@ public class CrearDetalleProductoController {
         Stage stage = (Stage) productoCB.getScene().getWindow();
         stage.close();
     }
+    public static void mostrarInformacionProducto(Producto producto) {
+        String mensaje = """
+            ID: %d
+            Código: %s
+            Nombre: %s
+            Categoría Principal: %s
+            Categoría Secundaria: %s
+            Descripción: %s
+            Precio: %.2f
+            Stock: %d
+            Características: %s
+            Estado: %s
+            """.formatted(
+                producto.getId(),
+                producto.getCodigo(),
+                producto.getNombre(),
+                producto.getCategoriaPrincipal(),
+                producto.getCategoriaSecundaria(),
+                producto.getDescripcion(),
+                producto.getPrecio(),
+                producto.getStock(),
+                producto.getCaracteristicas(),
+                producto.getEstado()
+        );
+
+        JOptionPane.showMessageDialog(null, mensaje, "Información del Producto", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
     public DetalleProducto getDetalleProducto() {
         return detalleProducto;

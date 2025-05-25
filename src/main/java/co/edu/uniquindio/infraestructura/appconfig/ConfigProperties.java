@@ -21,6 +21,8 @@ public class ConfigProperties {
                 .getResourceAsStream("config.properties")
             ;
 
+            System.out.println("Archivo encontrado: " + (input != null));
+
             if (input == null) {
                 throw new IOException();
             }

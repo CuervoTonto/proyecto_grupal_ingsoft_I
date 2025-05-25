@@ -57,6 +57,8 @@
       </FlowPane>
       <Button layoutX="30.0" layoutY="208.0" mnemonicParsing="false" onAction="#crearDetalleProducto" text="Agregar producto" />
       <Button layoutX="153.0" layoutY="208.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <Button fx:id="verBtn" layoutX="240.0" layoutY="208.0" mnemonicParsing="false" onAction="#ver" text="Ver" />
+
       <Text fill="#656565" layoutX="30.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* si el producto ya se encuentra en el carrito sus datos seran actualizados">
          <font>
             <Font name="System Italic" size="12.0" />
