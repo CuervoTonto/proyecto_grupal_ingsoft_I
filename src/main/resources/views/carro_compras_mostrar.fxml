@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox prefWidth="785.0" spacing="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <HBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Informacion Carro De Compra">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#regresar" text="&lt;- Regresar">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox style="-fx-border-color: #ccc;">
+               <children>
+                  <HBox style="-fx-background-color: #ddd;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del carro">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <GridPane hgap="10.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="codigo" />
+                              <TextField fx:id="carroCodigoField" editable="false" prefHeight="25.0" prefWidth="187.0" promptText="codigo carro compras" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="fecha" />
+                              <DatePicker fx:id="carroFechaField" editable="false" prefHeight="25.0" prefWidth="194.0" promptText="fecha de la compra" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <Label text="hora" />
+                              <TextField fx:id="carroHoraField" editable="false" prefWidth="198.0" promptText="hora de la compra" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox layoutX="30.0" layoutY="80.0" style="-fx-border-color: #ccc;">
+               <children>
+                  <HBox style="-fx-background-color: #ddd;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudadano">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <GridPane hgap="10.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="id" />
+                              <TextField fx:id="ciudadanoIdField" editable="false" prefHeight="25.0" prefWidth="214.0" promptText="id del ciudadano" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <Label text="nombre" />
+                              <TextField fx:id="ciudadanoNombreFIeld" editable="false" prefHeight="25.0" prefWidth="181.0" promptText="nombre(s) del ciudadano" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="apellido" />
+                              <TextField fx:id="ciudadanoApellidoField" editable="false" prefHeight="25.0" prefWidth="180.0" promptText="apellido(s) del ciudadano" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="email" />
+                              <TextField fx:id="ciudadanoEmailField" editable="false" prefHeight="25.0" prefWidth="194.0" promptText="nombre(s) del ciudadano" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="telefono" />
+                              <TextField fx:id="ciudadanoTelefonoField" editable="false" prefHeight="25.0" prefWidth="178.0" promptText="nombre(s) del ciudadano" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="cedula" />
+                              <TextField fx:id="ciudadanoCedulaField" editable="false" prefHeight="25.0" prefWidth="187.0" promptText="numero cedula" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox layoutX="30.0" layoutY="1306.0" style="-fx-border-color: #ccc;">
+               <children>
+                  <HBox style="-fx-background-color: #ddd;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Productos del carrito">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <FlowPane hgap="10.0" prefHeight="0.0" prefWidth="294.0">
+                     <children>
+                        <TextField fx:id="detalleProductoBusquedaField" prefHeight="25.0" prefWidth="232.0" promptText="nombre del producto" />
+                        <Button mnemonicParsing="false" onAction="#buscarDetalleProducto" text="Buscar" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FlowPane>
+                  <TableView fx:id="tablaDetalleProducto" prefHeight="156.0">
+                     <columns>
+                        <TableColumn fx:id="detalleProductoIdCol" prefWidth="37.0" text="id" />
+                        <TableColumn fx:id="detalleProductoCodigoCol" prefWidth="77.0" text="codigo" />
+                        <TableColumn fx:id="detalleProductoNombreCol" minWidth="6.0" prefWidth="157.0" text="nombre" />
+                        <TableColumn fx:id="detalleProductoImpuestoCol" minWidth="6.0" prefWidth="78.0" text="impuesto" />
+                        <TableColumn fx:id="detalleProductoPrecioCol" minWidth="6.0" prefWidth="101.0" text="precio" />
+                        <TableColumn fx:id="detalleProductoCantidadCol" minWidth="6.0" prefWidth="60.0" text="cantidad" />
+                        <TableColumn fx:id="detalleProductoSubtotalCol" minWidth="6.0" prefWidth="100.0" text="subtotal" />
+                        <TableColumn fx:id="detalleProductoTotalCol" minWidth="6.0" prefWidth="115.0" text="total" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="Total">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="totalText" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" />
+                           </children>
+                        </HBox>
+                        <Pane maxHeight="20.0" prefHeight="8.0" prefWidth="2.0" style="-fx-background-color: #ccc;" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="10.0">
+                           <children>
+                              <Label text="Subtotal">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Text fx:id="subtotalText" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <HBox spacing="10.0" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>

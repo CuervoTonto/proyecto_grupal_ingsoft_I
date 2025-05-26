@@ -9,12 +9,15 @@ import java.util.Locale;
 
 import co.edu.uniquindio.App;
 import co.edu.uniquindio.aplicacion.carro.CarroComprasService;
+import co.edu.uniquindio.aplicacion.detalleproducto.DetalleProductoService;
 import co.edu.uniquindio.dominio.carro.CarroCompras;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -54,10 +57,14 @@ public class CarroComprasController {
 
     private CarroComprasService service;
 
+    private DetalleProductoService dpService;
+
     public CarroComprasController(
-        CarroComprasService service
+        CarroComprasService service,
+        DetalleProductoService dpService
     ) {
         this.service = service;
+        this.dpService = dpService;
     }
 
     @FXML
@@ -79,6 +86,27 @@ public class CarroComprasController {
     @FXML
     void IrACrearCarroCompra(ActionEvent event) throws IOException {
         App.setRoot("carro_compra_crear");
+    }
+
+    @FXML
+    void mostrarInformacion(ActionEvent event) throws Exception {
+        CarroCompras seleccion = tablaCarrosCompras.getSelectionModel().getSelectedItem();
+
+        MostrarInformacionCarroComprasController ctrl =
+            new MostrarInformacionCarroComprasController(
+                seleccion,
+                dpService
+            );
+
+        FXMLLoader loader = new FXMLLoader(
+            getClass()
+                .getClassLoader()
+                .getResource("views/carro_compras_mostrar.fxml")
+        );
+
+        loader.setController(ctrl);
+
+        App.setRoot((Parent) loader.load());
     }
 
     @FXML
