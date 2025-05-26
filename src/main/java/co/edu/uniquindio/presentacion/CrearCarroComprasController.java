@@ -326,7 +326,11 @@ public class CrearCarroComprasController {
     }
 
     private void enviarEmailValidacion(CarroCompras carroCompras) {
+        Integer total = productos.stream().mapToInt(dp -> dp.calcularTotal()).sum();
+
         Context context = new Context();
+        context.setVariable("prods", productos);
+        context.setVariable("total", total);
 
         Email email = new Email();
         email.setAsunto("CARRO DE COMPRA APROBADO");
