@@ -32,12 +32,12 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brahian Steven Mosquera Valanta">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jeronimo Guerrero Maya">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="306.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brahian Steven Mosquera Valanta">
+            <Text layoutX="306.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luis Alejandro Marín Hernández">
                <font>
                   <Font size="14.0" />
                </font>
